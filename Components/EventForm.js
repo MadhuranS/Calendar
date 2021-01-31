@@ -69,6 +69,7 @@ export default function EventForm({ items, timestamp, addItem, setModalOpen }) {
               placeholder="Event description"
               onChangeText={props.handleChange("description")}
               value={props.values.description}
+              multiline
             ></TextInput>
             {/*<TextInput
               style={styles.input}

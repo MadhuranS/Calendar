@@ -1,5 +1,13 @@
 import React, { useState } from "react";
-import { SafeAreaView, StyleSheet, Button, Modal, View } from "react-native";
+import {
+  SafeAreaView,
+  StyleSheet,
+  Button,
+  Modal,
+  View,
+  TouchableOpacity,
+  Text,
+} from "react-native";
 import { Agenda } from "react-native-calendars";
 import uuid from "uuid-random";
 import RenderItem from "./RenderItem";
@@ -113,12 +121,29 @@ const Calendar = () => {
         onDayPress={currentDay}
         onDayChange={currentDay}
         loadItemsForMonth={loadItems}
+        theme={{
+          agendaKnobColor: "#850044",
+          agendaDayTextColor: "#850044",
+          agendaDayNumColor: "#850044",
+          agendaTodayColor: "#5E6A70",
+          selectedDotColor: "white",
+          dotColor: "#850044",
+          selectedDayBackgroundColor: "#850044",
+          todayTextColor: "#5E6A70",
+        }}
       />
-      <Button
+      {/*<Button
         title="Add event"
         //onPress={() => addItem(items, timestamp)}
         onPress={() => setMOdalOpen(true)}
-      ></Button>
+        style={styles.addButton}
+      ></Button>*/}
+      <TouchableOpacity
+        style={styles.addButton}
+        onPress={() => setMOdalOpen(true)}
+      >
+        <Text style={styles.addText}> Add event</Text>
+      </TouchableOpacity>
     </SafeAreaView>
   );
 };
@@ -137,6 +162,18 @@ const styles = StyleSheet.create({
   },
   closeButton: {
     marginLeft: "90%",
+  },
+  addButton: {
+    backgroundColor: "rgb(133, 0, 68)",
+    height: "7%",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  addText: {
+    color: "white",
+    justifyContent: "center",
+    alignItems: "center",
+    fontSize: 18,
   },
 });
 
